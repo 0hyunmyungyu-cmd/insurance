@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>보험보장분석</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>보험 보장 통합 분석 리포트</title>
   <style>
-    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: auto; background: #1e293b; }
-    iframe { width: 100%; height: 100%; border: none; display: block; }
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      background-color: #0f172a;
+      -webkit-text-size-adjust: 100%;
+    }
+    .app-frame {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100dvh;
+      border: none;
+      display: block;
+      background-color: #f8fafc;
+    }
   </style>
 </head>
 <body>
-  <iframe src="https://script.google.com/macros/s/AKfycbyYP3t0bx5a548P3wNnhVd6R8zIV_BuPV2_OeanrBuJ3Zp5jiXL5MJmg0slD72UkIot/exec" allow="clipboard-read; clipboard-write"></iframe>
+  <iframe
+    id="gasFrame"
+    class="app-frame"
+    src="https://script.google.com/macros/s/AKfycbyYP3t0bx5a548P3wNnhVd6R8zIV_BuPV2_OeanrBuJ3Zp5jiXL5MJmg0slD72UkIot/exec"
+    allow="clipboard-read; clipboard-write"
+    allowfullscreen
+  ></iframe>
+
+  <script>
+    // 깃허브 주소 뒤에 ?mode=view 등이 붙어 있을 경우 내부 Apps Script iframe에도 그대로 전달
+    (function () {
+      var baseExecUrl = "https://script.google.com/macros/s/AKfycbyYP3t0bx5a548P3wNnhVd6R8zIV_BuPV2_OeanrBuJ3Zp5jiXL5MJmg0slD72UkIot/exec";
+      var search = window.location.search;
+      if (search) {
+        document.getElementById("gasFrame").src = baseExecUrl + search;
+      }
+    })();
+  </script>
 </body>
 </html>
